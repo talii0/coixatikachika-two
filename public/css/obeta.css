@@ -76,7 +76,9 @@ form input{
     color: rgb(39, 134, 0);
     font-size: 1.5rem;
 }
-
+.group input{
+    color: white;
+}
 button{
     margin-bottom: 10px;
     align-items: center;
